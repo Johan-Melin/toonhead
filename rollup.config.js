@@ -8,7 +8,7 @@ export default {
     {
       file: 'dist/toonhead.cjs.js',
       format: 'cjs',
-      exports: 'default',
+      exports: 'named',
     },
     {
       file: 'dist/toonhead.esm.js',

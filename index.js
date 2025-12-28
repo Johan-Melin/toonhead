@@ -7,10 +7,16 @@
  * @param {string} [options.textColor='#ffffff'] - Text color in hex or rgb
  * @returns {string} SVG string of the avatar
  */
+
+import { 
+  body,
+  head
+} from './src/components/index.js';
+
 function toonhead(options = {}) {
   const {
     seed = Math.random().toString(36).substring(2, 10),
-    size = 100,
+    size = 768,
     bgColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%`,
     textColor = '#ffffff'
   } = options;
@@ -24,20 +30,9 @@ function toonhead(options = {}) {
   const displayText = seed.substring(0, 2).toUpperCase();
 
   return `
-    <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="${finalBgColor}" rx="50"/>
-      <text 
-        x="50%" 
-        y="50%" 
-        font-family="Arial, sans-serif" 
-        font-size="40" 
-        fill="${textColor}"
-        text-anchor="middle"
-        dominant-baseline="middle"
-        font-weight="bold"
-      >
-        ${displayText}
-      </text>
+    <svg width="${size}" height="${size}" viewBox="0 0 768 768" xmlns="http://www.w3.org/2000/svg">
+      ${body}
+      ${head}
     </svg>
   `.trim();
 }
@@ -57,3 +52,5 @@ if (typeof define === 'function' && define.amd) {
 if (typeof window !== 'undefined') {
   window.toonhead = toonhead;
 }
+
+export { toonhead };
